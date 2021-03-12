@@ -3,6 +3,7 @@
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
  public class AuthActivity extends AppCompatActivity {
 
@@ -21,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
     private EditText txtEmail;
     private EditText txtContraseña;
     private Button btnRegistrarse;
+    private Button btnIniciarSesion;
 
     // Variables de los datos que vamos a registrar
      private String nombre = "";
@@ -36,11 +42,14 @@ import com.google.firebase.database.DatabaseReference;
         setContentView(R.layout.activity_auth);
 
         Auth = FirebaseAuth.getInstance();
+        dataBase = FirebaseDatabase.getInstance().getReference();
 
         txtNombre = (EditText) findViewById(R.id.txtNombre);
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
+
         btnRegistrarse = (Button) findViewById(R.id.btnRegistrarse);
+        btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesion);
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +71,13 @@ import com.google.firebase.database.DatabaseReference;
                 }
             }
         });
+
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void registerUser() {
@@ -69,6 +85,25 @@ import com.google.firebase.database.DatabaseReference;
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("name", nombre);
+                    map.put("email", email);
+                    map.put("password", contraseña);
+
+                    String id = Auth.getCurrentUser().getUid();
+
+                    dataBase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task2) {
+                            if (task2.isSuccessful()) {
+                                startActivity(new Intent(AuthActivity.this, ImagenActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(AuthActivity.this, "No se puedieron crear los datos correctamente", Toast.LENGTH_SHORT);
+                            }
+                        }
+                    });
 
                 } else {
                     Toast.makeText(AuthActivity.this, "No se pudo registrar este usuario", Toast.LENGTH_SHORT);

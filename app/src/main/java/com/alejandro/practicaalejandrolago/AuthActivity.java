@@ -26,7 +26,6 @@ import java.util.Map;
     private EditText txtEmail;
     private EditText txtContraseña;
     private Button btnRegistrarse;
-    private Button btnIniciarSesion;
 
     // Variables de los datos que vamos a registrar
      private String nombre = "";
@@ -49,7 +48,6 @@ import java.util.Map;
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
 
         btnRegistrarse = (Button) findViewById(R.id.btnRegistrarse);
-        btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesion);
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,24 +70,6 @@ import java.util.Map;
             }
         });
 
-        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nombre = txtNombre.getText().toString();
-                email = txtEmail.getText().toString();
-                contraseña = txtContraseña.getText().toString();
-
-                if (nombre.isEmpty() && email.isEmpty() && contraseña.isEmpty()) {
-                    Toast.makeText(AuthActivity.this, "No has introducido ningun dato", Toast.LENGTH_SHORT);
-                } else if (nombre.isEmpty()) {
-                    Toast.makeText(AuthActivity.this, "Introduce un nombre", Toast.LENGTH_SHORT);
-                } else if (email.isEmpty()) {
-                    Toast.makeText(AuthActivity.this, "Introduce un correo electronico", Toast.LENGTH_SHORT);
-                } else if (contraseña.isEmpty()) {
-                    Toast.makeText(AuthActivity.this, "Introduce una contraseña", Toast.LENGTH_SHORT);
-                }
-            }
-        });
     }
 
     private void registerUser() {

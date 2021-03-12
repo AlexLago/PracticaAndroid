@@ -1,5 +1,6 @@
  package com.alejandro.practicaalejandrolago;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,7 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
  public class AuthActivity extends AppCompatActivity {
 
@@ -23,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
      private String contraseña = "";
 
      FirebaseAuth Auth;
+     DatabaseReference dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +65,16 @@ import com.google.firebase.auth.FirebaseAuth;
     }
 
     private void registerUser() {
+        Auth.createUserWithEmailAndPassword(email, contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
 
+                } else {
+                    Toast.makeText(AuthActivity.this, "No se pudo registrar este usuario", Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 
 }

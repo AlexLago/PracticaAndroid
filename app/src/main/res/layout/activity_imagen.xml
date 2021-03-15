@@ -6,4 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ImagenActivity">
 
+    <Spinner
+        android:id="@+id/spinnerImagenes"
+        android:layout_width="293dp"
+        android:layout_height="47dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124"
+        android:entries="@array/listaImagenes"/>
+
+    <Button
+        android:id="@+id/botonImagen"
+        android:layout_width="204dp"
+        android:layout_height="81dp"
+        android:onClick="onClickcambiarImagen"
+        android:text="Cambiar imagen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagenPortada"
+        app:layout_constraintVertical_bias="0.443" />
+
+    <ImageView
+        android:id="@+id/imagenPortada"
+        android:layout_width="363dp"
+        android:layout_height="385dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinnerImagenes"
+        app:layout_constraintVertical_bias="0.352"
+        app:srcCompat="@drawable/genshin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

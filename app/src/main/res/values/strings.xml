@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PracticaAlejandroLago</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Correo">Correo Electrónico</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="Registro">Registrarse</string>
 </resources>

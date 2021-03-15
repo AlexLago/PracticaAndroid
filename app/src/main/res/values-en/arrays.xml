@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!--Aquí añadiremos los elementos que se mostrarán en el spinner-->
+    <string-array name="listaImagenes">
+        <item>arknights</item>
+        <item>closers</item>
+        <item>genshin</item>
+        <item>lol</item>
+    </string-array>
+</resources>

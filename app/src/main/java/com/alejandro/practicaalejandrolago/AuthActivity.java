@@ -55,18 +55,15 @@ import java.util.Map;
                 nombre = txtNombre.getText().toString();
                 email = txtEmail.getText().toString();
                 contraseña = txtContraseña.getText().toString();
-
-                if(!nombre.isEmpty() && !email.isEmpty() && contraseña.isEmpty()) {
-
-                    if (contraseña.length() >= 6) {
-                        registerUser();
-                    } else {
-                        Toast.makeText(AuthActivity.this, "La contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT);
-                    }
-
-                } else {
+                if(nombre.isEmpty() || email.isEmpty() || contraseña.isEmpty()) {
                     Toast.makeText(AuthActivity.this, "Debes completar los campos", Toast.LENGTH_SHORT);
+                    return;
                 }
+                if (contraseña.length() < 6) {
+                    Toast.makeText(AuthActivity.this, "La contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT);
+                    return;
+                }
+                registerUser();
             }
         });
 

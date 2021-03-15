@@ -12,12 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticaAlejandroLago">
-        <activity android:name=".ImagenActivity">
-
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+        <activity
+            android:name=".ImagenActivity">
         </activity>
         <activity android:name=".AuthActivity">
             <intent-filter>

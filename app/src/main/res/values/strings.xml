@@ -4,4 +4,7 @@
     <string name="Correo">Correo Electrónico</string>
     <string name="Contraseña">Contraseña</string>
     <string name="Registro">Registrarse</string>
+    <string name="Login">Iniciar Sesion</string>
+    <string name="Change">Cambiar Imagen</string>
+    <string name="Back">Volver</string>
 </resources>

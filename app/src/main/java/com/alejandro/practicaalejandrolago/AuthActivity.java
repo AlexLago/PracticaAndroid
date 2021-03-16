@@ -26,6 +26,7 @@ import java.util.Map;
     private EditText txtEmail;
     private EditText txtContraseña;
     private Button btnRegistrarse;
+    private Button btnLoginAuth;
 
     // Variables de los datos que vamos a registrar
      private String nombre = "";
@@ -48,6 +49,7 @@ import java.util.Map;
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
 
         btnRegistrarse = (Button) findViewById(R.id.btnRegistrarse);
+        btnLoginAuth = (Button) findViewById(R.id.btnLoginAuth);
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,15 @@ import java.util.Map;
                 registerUser();
             }
         });
+
+
+        btnLoginAuth.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AuthActivity.this, LoginActivity.class));
+                finish();
+            }
+        }));
 
     }
 

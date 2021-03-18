@@ -93,6 +93,9 @@ import java.util.Map;
 
                     String id = Auth.getCurrentUser().getUid();
 
+                    startActivity(new Intent(AuthActivity.this, ImagenActivity.class));
+                    finish();
+
                     dataBase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {

@@ -7,4 +7,6 @@
     <string name="Login">Iniciar Sesion</string>
     <string name="Change">Cambiar Imagen</string>
     <string name="Back">Volver</string>
+    <string name="boss">WELCOME BACK, BOSS!!</string>
+    <string name="wait">KEPT YOU WAITING, HUH?</string>
 </resources>
